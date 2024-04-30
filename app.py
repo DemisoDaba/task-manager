@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SECRET_KEY'] = 'pestoTask'
 
 DB_PATH = 'tasks.db'
 
