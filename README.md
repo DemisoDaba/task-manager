@@ -2,6 +2,14 @@
 
 Welcome to Task Manager, a simple yet powerful web application built with Flask for managing your tasks efficiently. This application allows you to add, edit, filter, and delete tasks seamlessly.
 
+### 🌟 Take a Look at overview of web
+<p align="center"> 
+  <kbd>
+    <a href="https://DemisoDaba/task-manager" target="_blank"><img src="/static/sample.gif" alt="Portfolio Preview">
+  </a>
+  </kbd>
+</p>
+
 ## Features
 
 - **Add Tasks**: Easily add new tasks with titles, descriptions, start dates, end dates, and statuses.
