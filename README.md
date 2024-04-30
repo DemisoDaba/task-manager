@@ -39,5 +39,5 @@ Welcome to Task Manager, a simple yet powerful web application built with Flask 
    python app.py
 
 6. Open your web browser and visit 
-  ```bash 
+   ```bash 
    http://localhost:5000 to access the Task Manager app
