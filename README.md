@@ -22,16 +22,22 @@ Welcome to Task Manager, a simple yet powerful web application built with Flask 
 1. Clone the repository:
    ```bash
    git clone https://github.com/DemisoDaba/task-manager.git
-# Clone the repository:
-git clone https://github.com/DemisoDaba/task-manager.git
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/DemisoDaba/task-manager.git
 
-# Navigate to the project directory:
-cd task-manager
+3. Navigate to the project directory:
+   ```bash
+   cd task-manager
 
-# Install the required dependencies:
-pip install -r requirements.txt
+4. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
 
-# Run the application:
-python app.py
+5. Run the application:
+   ```bash
+   python app.py
 
-#Open your web browser and visit http://localhost:5000 to access the Task Manager app
+6. Open your web browser and visit 
+  ```bash 
+   http://localhost:5000 to access the Task Manager app
