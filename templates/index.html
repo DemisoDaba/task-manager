@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <!-- Link to Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Link to custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .button-group {
+            display: inline-flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1 class="center-align">Task Managment App!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card card-filter-tasks">
+                    <div class="card-content">
+                        <span class="card-title">Filter Tasks</span>
+                        <form action="{{ url_for('filter_tasks') }}" method="post">
+                            <div class="input-field">
+                                <select id="filter_status" name="status">
+                                    <option value="All">Select (All-default) </option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                                <label>Filter by Status</label>
+                            </div>
+                            <button class="btn waves-effect waves-light" type="submit">Filter</button>
+                        </form>
+						<!-- Task Management Application Information -->
+						<div class="card card-task-info">
+							<div class="card-content">
+								<span class="card-title">Application Info</span>
+								<p>
+									This is the challenge from <a href="https://pesto.tech" target="_blank">pesto.tech</a>, tasked with creating a comprehensive task management application having functionality, quality, user experience & more.
+								</p>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <div class="card card-add-update-task">
+                    <div class="card-content">
+                        <span class="card-title">Add or Update Task</span>
+                        <form action="{% if edit_task %}{{ url_for('edit_task', task_id=edit_task[0]) }}{% else %}{{ url_for('add') }}{% endif %}" method="post">
+                            <div class="input-field">
+                                <input type="text" id="title" name="title" value="{% if edit_task %}{{ edit_task[1] }}{% endif %}" required>
+                                <label for="title">Title</label>
+                            </div>
+                            <div class="input-field">
+                                <textarea id="description" class="materialize-textarea" name="description" required>{% if edit_task %}{{ edit_task[2] }}{% endif %}</textarea>
+                                <label for="description">Description</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="date" id="start_date" name="start_date" required>
+                                <label for="start_date">Start Date</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="date" id="end_date" name="end_date" required>
+                                <label for="end_date">End Date</label>
+                            </div>
+                            <div class="input-field">
+                                <select id="status" name="status" required>
+                                    <option value="" disabled selected>Select Status</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                                <label>Status</label>
+                            </div>
+                            <button class="btn waves-effect waves-light" type="submit">{% if edit_task %}Update Task{% else %}Add Task{% endif %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card card-tasks">
+                    <div class="card-content">
+                        <span class="card-title">Tasks</span>
+                        <table class="striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for task in tasks %}
+                                    <tr>
+                                        <td>{{ task[1] }}</td>
+                                        <td>{{ task[2] }}</td>
+                                        <td>{{ task[3] }}</td>
+                                        <td>{{ task[4] }}</td>
+                                        <td>{{ task[5] }}</td>
+                                        <td>
+                                            <div class="button-group">
+                                                <form action="{{ url_for('edit_task_form', task_id=task[0]) }}" method="post">
+                                                    <button class="btn waves-effect waves-light" type="submit">Edit</button>
+                                                </form>
+                                                <form action="{{ url_for('delete_task_view', task_id=task[0]) }}" method="post">
+                                                    <button class="btn waves-effect waves-light red" type="submit">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Display flash messages -->
+        <div id="flash-message" class="flash">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    <!-- Include jQuery and Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Include custom scripts -->
+    <script src="{{ url_for('static', filename='flash.js') }}"></script>
+</body>
+</html>

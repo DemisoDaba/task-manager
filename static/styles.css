@@ -1,0 +1,100 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Header styles */
+h1.center-align {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    padding: 10px 0;
+    position: relative;
+}
+
+h1.center-align::before,
+h1.center-align::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #333;
+}
+
+h1.center-align::before {
+    top: 0;
+}
+
+h1.center-align::after {
+    bottom: 0;
+}
+
+/* Flash message styles */
+.flash {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1;
+    display: none;
+}
+
+/* Materialize select styles */
+select {
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1; /* Ensure select element has a higher z-index */
+    position: relative; /* Add margin-bottom to create space between select and other elements */
+}
+
+/* Materialize table styles */
+table {
+    margin-bottom: 20px;
+}
+
+/* Add or Update Task section styles */
+.card-add-update-task {
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px; /* Add margin right */
+}
+
+/* Filter Tasks section styles */
+.card-filter-tasks {
+    border: 2px solid #333;
+    border-radius: 10px; 
+    padding: 10px; 
+    margin-right: 10px; /* Add margin right */
+    height: 100%; /* Set equal height */
+}
+
+/* Tasks section styles */
+.card-tasks {
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px; 
+}
+
+/* Task Management Application Information card styles */
+.card-task-info {
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px; /* Add margin top */
+    height: 100%; /* Set equal height */
+}
